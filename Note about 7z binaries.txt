@@ -1,0 +1,3 @@
+Included in this package are x32 binaries (7z.exe, 7z.dll) for Microsoft Windows. If you wish to make use of the advantages of x64 systems, you can obtain a x64 version of 7-zip at <http://www.7-zip.org/>
+
+There are some (unofficial) 7-zip packages for Linux and Mac available at <http://www.7-zip.org/> as well, but py7z may not be compatible with some of those.

@@ -24,12 +24,12 @@
 '''A quick and dirty Python wrapper for the 7-zip command line interface.'''
 
 __author__ = 'Argomirr (argomirr@gmail.com)'
-__version__ = 'Revision: 1'
-__date__ = 'Date: 2010/11/08 19:41:43'
+__version__ = 'Revision: 2'
+__date__ = 'Date: 2010/12/12 15:27:40'
 __copyright__ = 'Copyright (c) 2010 Argomirr'
 __license__ = 'GNU GPL'
 
-__all__ = ['SevenZipError', 'FatalError', 'CommandLineError', 'MemoryError', 'UserInterrupt',
+__all__ = ['SevenZipError', 'FatalError', 'CommandLineError', 'MemError', 'UserInterrupt',
 			'unpack', 'unpack_no_full_paths', 'pack', 'test', 'list', 'comp7z', 'compZip',
 			'compGZip', 'compBZip2', 'compLZMA', 'compPPMd']
 
@@ -69,7 +69,7 @@ class CommandLineError(SevenZipError):
 	def __init__(self, msg='7z: command line error'):
 		self.value = msg
 
-class MemoryError(SevenZipError):
+class MemError(SevenZipError):
 	'''Error class for 7z memory error return code.'''
 	def __init__(self, msg='7z: not enough memory to perform this operation'):
 		self.value = msg
@@ -98,7 +98,7 @@ def unpack(path, targetdir=os.getcwd(), fullpaths=True):
 	elif res == 7:
 		raise CommandLineError
 	elif res == 8:
-		raise MemoryError
+		raise MemError
 	elif res == 255:
 		raise UserInterrupt
 	else:
@@ -127,7 +127,7 @@ def pack(path, archivepath, compression_level=5, compression_type='7z', password
 	elif res == 7:
 		raise CommandLineError
 	elif res == 8:
-		raise MemoryError
+		raise MemError
 	elif res == 255:
 		raise UserInterrupt
 	else:
@@ -149,7 +149,7 @@ def test(archivepath):
 	elif res == 7:
 		raise CommandLineError
 	elif res == 8:
-		raise MemoryError
+		raise MemError
 	elif res == 255:
 		raise UserInterrupt
 	else:
@@ -178,7 +178,7 @@ def list(archivepath):
 	elif res == 7:
 		raise CommandLineError
 	elif res == 8:
-		raise MemoryError
+		raise MemError
 	elif res == 255:
 		raise UserInterrupt
 	else:
